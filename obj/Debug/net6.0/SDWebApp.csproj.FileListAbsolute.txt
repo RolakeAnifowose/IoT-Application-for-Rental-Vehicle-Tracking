@@ -1,0 +1,8 @@
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.csproj.AssemblyReference.cache
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.AssemblyInfoInputs.cache
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.AssemblyInfo.cs
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.csproj.CoreCompileInputs.cache
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.MvcApplicationPartsAssemblyInfo.cache
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.RazorAssemblyInfo.cache
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Debug/net6.0/SDWebApp.RazorAssemblyInfo.cs

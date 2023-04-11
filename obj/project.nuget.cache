@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "szmxkA6a5W2kgSBXthBb3QoGz80AT7zsG6tBZbaO+h7fh1G9aT7vpThJnqd2BI2EnECOjL8iKa309jbu4xoy1g==",
+  "dgSpecHash": "TRhqC6XZXcb3l6IcuHIiEm2CFGZQLfZFZtFGlEKDqj9UpAcSCsK9LbKeboEOQMrhPATHMDARhxlpLiETvuB1LA==",
   "success": true,
   "projectFilePath": "/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/SDWebApp.csproj",
   "expectedPackageFiles": [
+    "/Users/rolly/.nuget/packages/microsoft.visualstudio.testplatform/14.0.0/microsoft.visualstudio.testplatform.14.0.0.nupkg.sha512",
     "/Users/rolly/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
