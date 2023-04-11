@@ -41,6 +41,11 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+
 - task: AzureWebApp@1
   displayName: 'Azure Web App Deploy'
   inputs:
