@@ -3,11 +3,11 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-# trigger:
-# - master
+trigger:
+- master
 
-# pool:
-#   vmImage: ubuntu-latest
+pool:
+  vmImage: ubuntu-latest
 
 # steps:
 # - script: echo Hello, world!
@@ -22,47 +22,14 @@
 #     # Test
 #     dotnet test
 
-trigger:
-- master
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:
-  buildConfiguration: 'Release'
-  webAppName: 'geolocationwebapp'
-  dotnetCoreVersion: '6.0'
-
 steps:
-# - task: UseDotNet@2
-#   displayName: 'Install .NET Core SDK $(dotnetCoreVersion)'
-#   inputs:
-#     packageType: 'sdk'
-#     version: '$(dotnetCoreVersion)'
+- task: UseDotNet@2
+  inputs:
+    version: '6.x'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Restore packages'
+  displayName: Build
   inputs:
-    command: 'restore'
+    command: build
     projects: '**/*.csproj'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Build the project'
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Publish the project'
-  inputs:
-    command: 'publish'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-
-- task: AzureWebApp@1
-  displayName: 'Deploy the project'
-  inputs:
-    azureSubscription: 'CMP9785_Airat_26027603'
-    appName: '$(geolocationwebapp)'
-    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    arguments: '--configuration $(buildConfiguration)' # Update this to match your need
