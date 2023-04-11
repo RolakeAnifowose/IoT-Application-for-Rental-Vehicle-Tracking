@@ -51,4 +51,6 @@ steps:
   inputs:
     azureSubscription: 'azureconnectionforpipeline'
     appName: 'geolocationwebapp'
-    package: '$(build.artifactStagingDirectory)/**/*.zip'
+    package: $(System.DefaultWorkingDirectory)/**/*.zip    
+
+    # package: '$(build.artifactStagingDirectory)/**/*.zip'
