@@ -1,0 +1,163 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@section scripts {
+    <script type='text/javascript' src='https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js'></script> @* Script for Azure Map Control *@
+    <script type='text/javascript' src='https://atlas.microsoft.com/sdk/js/v2/atlas.js?api-version=2'></script>
+    <script type='text/javascript' src='https://atlas.microsoft.com/sdk/js/v2/atlas.min.js?api-version=2'></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script> @* Import Chart.js library for my scatter chart *@
+
+    <script>
+        // Fetch data from the speed functionapp
+        fetch('https://speedfunctionapp.azurewebsites.net/api/speed') //Function URL for GetSpeed Function
+            .then(response => response.json())
+            .then(data => {
+                // Extract the distance and time data from the API response
+                const distanceData = data.map(item => item.distance);
+                const timeData = data.map(item => item.time);
+                const vehicleIdData = data.map(item => item.id);
+
+
+                // Create scatter chart
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Speed',
+                            data: distanceData.map((distance, index) => ({x: timeData[index], y: distance, speed: distance / timeData[index], vehicleId: vehicleIdData[index]})),
+                            // Return red datapoint if speed is greater than 16km/h
+                            pointBackgroundColor: distanceData.map((distance, index) => distance / timeData[index] > 16 ? 'red' : 'blue')
+                        }]
+                    },
+                    options: {
+                        //X axis is Time (hours) and Y axis is Distance measured in kilometres
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Time (hr)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Distance (km)'
+                                }
+                            }
+                        },
+                        //Display speed and vehicle ID when a datapoint is clicked
+                        onClick: (evt, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                const distance = distanceData[index];
+                                const time = timeData[index];
+                                const speed = distance / time;
+                                const vehicleId = vehicleIdData[index];
+                                alert(`Speed: ${speed.toFixed(2)} km/h. \nVehicle ID: ${vehicleId}`);
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: (context) => {
+                                        const speed = context.dataset.data[context.dataIndex].speed;
+                                        const isOverSpeedLimit = speed > 16;
+                                        const speedMessage = isOverSpeedLimit ? `Driver going above recommended speed limit.` : `Driver is within speed limit.`;
+                                        const vehicleId = `Vehicle ID: ${vehicleIdData[context.dataIndex]}`;
+                                        @* const vehicleId = vehicleIdData[index]; *@
+                                        const message = `${vehicleId} Speed: ${speed.toFixed(2)} km/h. ${speedMessage}`;
+                                        return message; //This message is displayed when you hover over a datapoint
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+
+    @* Create a Heatmap to show the location of rental vehicles using Azure Maps *@
+    <script type='text/javascript'>
+    var map, heatmapLayer;
+
+    function GetMap() {
+        map = new atlas.Map('map', {
+            center: [-0.5333, 53.2333], //Coordinates for Lincoln, England
+            zoom: 5,
+            view: 'Auto',
+            authOptions: {
+                authType: 'subscriptionKey',
+                subscriptionKey: '90us3C5sGlQ3DNxat35IlyENDp__aA2K8073JFd-yrY' //My Azure Maps subscription key
+            }
+        });
+
+        map.events.add('ready', function () {
+            //Create a data source and add it to the map
+            var dataSource = new atlas.source.DataSource();
+            map.sources.add(dataSource);
+
+            //Load the data from the geolocation functionapp endpoint and add it to the data source. This endpoint returns the last 40 items in my Cosmos DB container as that's the query set on the function
+            fetch('https://geolocationfunctionapp.azurewebsites.net/api/geolocation/')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(item => {
+                        dataSource.add(new atlas.data.Feature(new atlas.data.Point([item.longitude, item.latitude])));
+                    });
+
+                    //Create a heatmap layer and add it to the map
+                    heatmapLayer = new atlas.layer.HeatMapLayer(dataSource);
+                    map.layers.add(heatmapLayer);
+
+                    //Change the color gradient of the heatmap
+                    heatmapLayer.setOptions({
+                        colorGradient: atlas.render.getGradient('RedYellowBlue')
+                    });
+                });
+        });
+    }
+
+    //Load the Azure Maps library
+    function loadMapScenario() {
+        var script = document.createElement('script');
+        script.src = 'https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js';
+        document.body.appendChild(script);
+        script.onload = function () {
+            GetMap();
+        };
+    }
+    loadMapScenario();
+    </script>
+
+
+}
+
+<div class="text-center">
+    <h2>IoT Application for Rental Vehicle Tracking</h2><br>
+    <h4>Name: Anifowose Airat</h4>
+    <h4>Student ID: 26027603</h4>
+    <p></p>
+    <div>   
+        <h5>Scatter Chart showing Distance, Time and Speed for each rental car</h5>
+        <canvas id="myChart"></canvas><br>
+        
+        <h5>Heat Map showing Rental Vehicle locations</h5>
+        <div id="map"></div>
+    </div>
+</div>
+
+<style>
+    #map {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            left: 0;
+            top: 0;
+            margin: 0;
+            padding: 0;
+        }
+    </style>

@@ -1,0 +1,8 @@
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/SDWebApp
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/appsettings.Development.json
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/appsettings.json
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/SDWebApp.dll
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/SDWebApp.deps.json
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/SDWebApp.runtimeconfig.json
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/SDWebApp.pdb
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/publish/Newtonsoft.Json.dll
