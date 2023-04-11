@@ -28,8 +28,15 @@ steps:
     version: '6.x'
 
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: Build Web App
   inputs:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)' # Update this to match your need
+
+- task: DotNetCoreCLI@2
+  displayName: Test Web App
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
