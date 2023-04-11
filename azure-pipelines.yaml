@@ -3,21 +3,66 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+# trigger:
+# - master
+
+# pool:
+#   vmImage: ubuntu-latest
+
+# steps:
+# - script: echo Hello, world!
+#   displayName: 'Run a one-line script'
+
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
+#     echo See https://aka.ms/yaml
+#   displayName: 'Run a multi-line script'
+
+# - script: |
+#     # Test
+#     dotnet test
+
 trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  webAppName: 'geolocationwebapp'
+  dotnetCoreVersion: '6.0'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+# - task: UseDotNet@2
+#   displayName: 'Install .NET Core SDK $(dotnetCoreVersion)'
+#   inputs:
+#     packageType: 'sdk'
+#     version: '$(dotnetCoreVersion)'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: DotNetCoreCLI@2
+  displayName: 'Restore packages'
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
 
-- script: |
-    # Test
-    dotnet test
+- task: DotNetCoreCLI@2
+  displayName: 'Build the project'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish the project'
+  inputs:
+    command: 'publish'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+- task: AzureWebApp@1
+  displayName: 'Deploy the project'
+  inputs:
+    azureSubscription: 'CMP9785_Airat_26027603'
+    appName: '$(geolocationwebapp)'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
