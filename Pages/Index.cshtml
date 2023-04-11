@@ -13,7 +13,7 @@
 
     <script>
         // Fetch data from the speed functionapp
-        fetch('https://speedfunctionapp.azurewebsites.net/api/speed') //Function URL for GetSpeed Function
+        fetch('https://speedfunctionapp.azurewebsites.net/api/speed')
             .then(response => response.json())
             .then(data => {
                 // Extract the distance and time data from the API response
@@ -71,7 +71,7 @@
                                         const vehicleId = `Vehicle ID: ${vehicleIdData[context.dataIndex]}`;
                                         @* const vehicleId = vehicleIdData[index]; *@
                                         const message = `${vehicleId} Speed: ${speed.toFixed(2)} km/h. ${speedMessage}`;
-                                        return message; //This message is displayed when you hover over a datapoint. It shows speed, vehicle ID, and if driver is withing speed limit or not
+                                        return message; //This message is displayed when you hover over a datapoint. It shows speed, vehicle ID, and if driver is withing speed limit or not.
                                     }
                                 }
                             }
