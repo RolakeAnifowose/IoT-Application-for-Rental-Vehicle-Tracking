@@ -40,3 +40,10 @@ steps:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+- task: AzureWebApp@1
+  displayName: 'Azure Web App Deploy'
+  inputs:
+    azureSubscription: 'azureconnectionforpipeline'
+    appName: 'geolocationwebapp'
+    package: '$(build.artifactStagingDirectory)/**/*.zip'
