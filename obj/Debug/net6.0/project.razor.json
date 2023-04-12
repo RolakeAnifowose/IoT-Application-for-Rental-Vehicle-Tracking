@@ -18407,6 +18407,11 @@
       "FilePath": "/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/Pages/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/Pages/Architecture.cshtml",
+      "TargetPath": "Pages\\Architecture.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.3"

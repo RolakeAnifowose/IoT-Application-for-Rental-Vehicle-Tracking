@@ -1,9 +1,0 @@
-@page
-@model ArchitectureModel
-@{
-    ViewData["Title"] = "Architecture Diagram page";
-}
-
-<div class="text-center">
-    <img src="CloudDevelopmentDiagram.jpeg" alt="Image description">
-</div>

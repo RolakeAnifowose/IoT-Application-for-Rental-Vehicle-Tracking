@@ -5,15 +5,19 @@ namespace SDWebApp.Pages;
 
 public class ArchitectureModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public ArchitectureModel(ILogger<IndexModel> logger)
+    public IActionResult OnGet()
     {
-        _logger = logger;
-    }
+        // Replace "image.jpg" with the filename of your image
+        var imageFilePath = "Images/Diagram.png"; 
+        
+        // Read the image file as a byte array
+        var imageData = System.IO.File.ReadAllBytes(imageFilePath);
 
-    public void OnGet()
-    {
+        // Determine the MIME type of the image
+        var mimeType = "image/png"; // Replace with the appropriate MIME type for your image
 
+        // Return the image as a FileResult
+        return new FileContentResult(imageData, mimeType);
     }
 }
+

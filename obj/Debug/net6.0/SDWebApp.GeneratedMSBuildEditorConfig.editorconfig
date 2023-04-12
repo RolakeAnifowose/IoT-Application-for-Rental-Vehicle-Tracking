@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/Pages/Architecture.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXJjaGl0ZWN0dXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
