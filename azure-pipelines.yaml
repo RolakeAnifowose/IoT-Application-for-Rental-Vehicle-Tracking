@@ -12,65 +12,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-# - task: UseDotNet@2
-#   inputs:
-#     version: '6.x'
-
-# # - task: DotNetCoreCLI@2
-# #   displayName: Test Web Application
-# #   inputs:
-# #     command: test
-# #     projects: '**/*Tests/*.csproj'
-# #     arguments: '--configuration $(buildConfiguration)'
-
-# - task: CopyFiles@2
-#   displayName: 'Copy image file to artifact staging directory'
-#   inputs:
-#     SourceFolder: '$(System.DefaultWorkingDirectory)/Images'
-#     Contents: 'Diagram.png'
-#     TargetFolder: '$(System.DefaultWorkingDirectory)/Images'
-
-# # - task: DotNetCoreCLI@2
-# #   inputs:
-# #     command: 'publish'
-# #     publishWebProjects: true
-
-# # - task: PublishBuildArtifacts@1
-# #   inputs:
-# #     pathToPublish: $(System.DefaultWorkingDirectory)
-# #     artifactName: MyBuildOutputs
-
-# - task: DotNetCoreCLI@2
-#   displayName: Build Web App
-#   inputs:
-#     command: build
-#     projects: '**/*.csproj'
-#     arguments: '--configuration $(buildConfiguration)'
-
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: publish
-#     publishWebProjects: True
-#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-#     zipAfterPublish: True
-
-# # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
-# - task: PublishPipelineArtifact@1
-#   inputs:
-#     targetPath: '$(Build.ArtifactStagingDirectory)' 
-#     artifactName: 'myWebsiteName'
-
-# - task: AzureWebApp@1
-#   displayName: 'Azure Web App Deploy'
-#   inputs:
-#     azureSubscription: 'azureconnectionforpipeline'
-#     appName: 'geolocationwebapp'
-#     package: $(Build.ArtifactStagingDirectory)/**/*.zip
-    # package: $(System.DefaultWorkingDirectory)/**/*.zip    
-
-    # package: '$(build.artifactStagingDirectory)/**/*.zip'
-
-
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
@@ -79,7 +20,7 @@ steps:
     publishWebProjects: true
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'azureconnectionforpipeline'
+    azureSubscription: 'azureconnectionforpipeline' #Created this azure connection service for my Azure subscription
     appType: 'webAppLinux'
-    appName: 'geolocationwebapp'
+    appName: 'geolocationwebapp' #My Web App Name
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'

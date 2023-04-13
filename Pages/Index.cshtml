@@ -21,7 +21,6 @@
                 const timeData = data.map(item => item.time);
                 const vehicleIdData = data.map(item => item.id);
 
-
                 // Create scatter chart
                 const ctx = document.getElementById('myChart').getContext('2d');
                 const myChart = new Chart(ctx, {
@@ -87,6 +86,7 @@
 
     function GetMap() {
         map = new atlas.Map('map', {
+            showFeedback: false,
             center: [-0.5333, 53.2333], //Coordinates for Lincoln, England
             zoom: 5,
             view: 'Auto',
@@ -146,15 +146,17 @@
         <canvas id="myChart"></canvas><br>
         
         <h5>Heat Map showing Rental Vehicle locations</h5>
-        <div id="map"></div>
+        <div id="map"></div> <br><br>
 
-        <img src="https://speeddatastorage.blob.core.windows.net/images/Diagram.png" alt="My Architecture Diagram">
+        @* Added my project architecture diagram to the index page *@
+        <h5>Architecture Diagram</h5>
+        <img src="https://speeddatastorage.blob.core.windows.net/images/Diagram.png" alt="My Architecture Diagram" style="width: 100%; height 500px"> 
 
     </div>
 </div>
 
 <style>
-    #map {
+        #map {
             position: relative;
             width: 100%;
             height: 500px;
@@ -162,5 +164,10 @@
             top: 0;
             margin: 0;
             padding: 0;
+        }
+
+        @* Removed the Azure Maps keyboard shortcut *@
+        #atlas-map-shortcuts, #atlas-map-style, #azure-map-copyright, .azure-map-copyright, .azure-map-logo, .azure-map-feedback, .tooltiptext {
+            display: none;
         }
     </style>

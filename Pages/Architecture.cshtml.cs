@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+// using Azure.Storage.Blobs;
+using System.Net;
+using System;
 
 namespace SDWebApp.Pages;
 
@@ -7,15 +10,16 @@ public class ArchitectureModel : PageModel
 {
     public IActionResult OnGet()
     {
-        // Replace "image.jpg" with the filename of your image
-        var imageFilePath = "Images/Diagram.png"; 
+        //Get the image from the Azure storage account
+        var imageFilePath = "https://speeddatastorage.blob.core.windows.net/images/Diagram.png"; 
         
         // Read the image file as a byte array
-        var imageData = System.IO.File.ReadAllBytes(imageFilePath);
+        var wc = new System.Net.WebClient();
+        var imageData = wc.DownloadData(imageFilePath);
 
         // Determine the MIME type of the image
-        var mimeType = "image/png"; // Replace with the appropriate MIME type for your image
-
+        var mimeType = "image/png"; 
+        
         // Return the image as a FileResult
         return new FileContentResult(imageData, mimeType);
     }
