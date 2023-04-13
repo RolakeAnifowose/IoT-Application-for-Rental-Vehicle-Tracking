@@ -27,6 +27,13 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+- task: CopyFiles@2
+  displayName: 'Copy image file to artifact staging directory'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)/Images'
+    Contents: 'Diagram.png'
+    TargetFolder: '$(System.DefaultWorkingDirectory)/Images'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
