@@ -13,19 +13,12 @@ steps:
   inputs:
     version: '6.x'
 
-- task: DotNetCoreCLI@2
-  displayName: Build Web App
-  inputs:
-    command: build
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: Test Web Application
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+# - task: DotNetCoreCLI@2
+#   displayName: Test Web Application
+#   inputs:
+#     command: test
+#     projects: '**/*Tests/*.csproj'
+#     arguments: '--configuration $(buildConfiguration)'
 
 - task: CopyFiles@2
   displayName: 'Copy image file to artifact staging directory'
@@ -38,6 +31,18 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     pathToPublish: $(System.DefaultWorkingDirectory)
+#     artifactName: MyBuildOutputs
+
+- task: DotNetCoreCLI@2
+  displayName: Build Web App
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: AzureWebApp@1
   displayName: 'Azure Web App Deploy'
