@@ -11,6 +11,7 @@
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script> @* Import Chart.js library for my scatter chart *@
 
+    @* Scatter chart to show vehicle distance, speed and time *@
     <script>
         // Fetch data from the speed functionapp
         fetch('https://speedfunctionapp.azurewebsites.net/api/speed')
@@ -57,7 +58,9 @@
                                 const time = timeData[index];
                                 const speed = distance / time;
                                 const vehicleId = vehicleIdData[index];
-                                alert(`Speed: ${speed.toFixed(2)} km/h. \nVehicle ID: ${vehicleId}`);
+                                const isOverSpeedLimit = speed > 16;
+                                const speedMessage = isOverSpeedLimit ? `Driver going above recommended speed limit.` : `Driver is within speed limit.`;
+                                alert(`Speed: ${speed.toFixed(2)} km/h. \nVehicle ID: ${vehicleId} \n${speedMessage}`);
                             }
                         },
                         plugins: {
@@ -101,7 +104,7 @@
             var dataSource = new atlas.source.DataSource();
             map.sources.add(dataSource);
 
-            //Load the data from the geolocation functionapp endpoint and add it to the data source. This endpoint returns the last 40 items in my Cosmos DB container as that's the query set on the function
+            //Load the data from the geolocation functionapp endpoint and add it to the data source. This endpoint returns the last 30 items in my Cosmos DB container as that's the query set on the function
             fetch('https://geolocationfunctionapp.azurewebsites.net/api/geolocation/')
                 .then(response => response.json())
                 .then(data => {
@@ -147,11 +150,6 @@
         
         <h5>Heat Map showing Rental Vehicle locations</h5>
         <div id="map"></div> <br><br>
-
-        @* Added my project architecture diagram to the index page *@
-        <h5>Architecture Diagram</h5>
-        <img src="https://speeddatastorage.blob.core.windows.net/images/Diagram.png" alt="My Architecture Diagram" style="width: 100%; height 500px"> 
-
     </div>
 </div>
 

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-// using Azure.Storage.Blobs;
 using System.Net;
 using System;
 
@@ -19,7 +18,7 @@ public class ArchitectureModel : PageModel
 
         // Determine the MIME type of the image
         var mimeType = "image/png"; 
-        
+
         // Return the image as a FileResult
         return new FileContentResult(imageData, mimeType);
     }
