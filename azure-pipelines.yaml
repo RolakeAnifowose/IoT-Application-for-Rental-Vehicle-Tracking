@@ -32,7 +32,7 @@ steps:
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)/Images'
     Contents: 'Diagram.png'
-    TargetFolder: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    TargetFolder: '$(System.DefaultWorkingDirectory)/Images'
 
 - task: DotNetCoreCLI@2
   inputs:
