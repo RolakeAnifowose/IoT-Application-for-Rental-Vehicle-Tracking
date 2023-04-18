@@ -12,12 +12,15 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+# Build the Azure web app
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+# Publish the web app package
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: true
+# Deploy the web app automatically 
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'azureconnectionforpipeline' #Created this azure connection service for my Azure subscription

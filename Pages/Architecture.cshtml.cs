@@ -9,8 +9,8 @@ public class ArchitectureModel : PageModel
 {
     public IActionResult OnGet()
     {
-        //Get the image from the Azure storage account
-        var imageFilePath = "https://speeddatastorage.blob.core.windows.net/images/Diagram.png"; 
+        //Get the Architecture diagaram image from the Azure storage account
+        var imageFilePath = "https://speeddatastorage.blob.core.windows.net/images/Diagram1.png"; 
         
         // Read the image file as a byte array
         var wc = new System.Net.WebClient();
