@@ -10,5 +10,7 @@
     <PackageReference Include="Microsoft.VisualStudio.TestPlatform" Version="14.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
-
+  <None Update="proxies.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </None>
 </Project>
