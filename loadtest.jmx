@@ -53,3 +53,5 @@
     </hashTree>
   </hashTree>
 </jmeterTestPlan>
+
+<!-- Ran a simple load test on Azure -->

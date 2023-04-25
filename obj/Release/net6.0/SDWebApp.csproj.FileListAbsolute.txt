@@ -66,3 +66,4 @@
 /Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/obj/Release/net6.0/ref/SDWebApp.dll
 /Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 /Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/bin/Release/net6.0/proxies.json

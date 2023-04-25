@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jenFMf24fCGruxxVH5xRMU+MJaa+IFFN8gd12keZkso=",
+  "Hash": "57Xobuqg0joiMG9Uv8j4eEPKjtm68Z1TO0fcCRVa/ms=",
   "Source": "SDWebApp",
   "BasePath": "_content/SDWebApp",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/wwwroot/loaderio-95bb17d528b7d0101110f6d63e430bfe.txt",
+      "SourceId": "SDWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rolly/Desktop/MScWork/CloudDevelopment/VehicleTrackingWebApp/wwwroot/",
+      "BasePath": "_content/SDWebApp",
+      "RelativePath": "loaderio-95bb17d528b7d0101110f6d63e430bfe.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/loaderio-95bb17d528b7d0101110f6d63e430bfe.txt"
     }
   ]
 }
